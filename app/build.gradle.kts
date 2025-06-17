@@ -55,8 +55,6 @@ dependencies {
     ksp(libs.androidx.ksp)
     implementation(libs.androidx.livedata)
     implementation(libs.kotlin.coroutines)
-    implementation(libs.kotlin.retrofit)
-    implementation(libs.kotlin.gsonconvert)
     implementation(libs.androidx.viewmodel)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
