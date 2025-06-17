@@ -6,21 +6,21 @@ import androidx.lifecycle.ViewModelProvider.AndroidViewModelFactory.Companion.AP
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
-import com.eas.dbroom.data.User
-import com.eas.dbroom.model.UserData
+import com.eas.dbroom.data.Alumno
+import com.eas.dbroom.model.AlumnoData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
 class RegisterViewModel (private val userRepository: UserRepository) : ViewModel() {
 
-    fun getAll(): Flow<List<User>> = userRepository.getAll()
+    fun getAll(matricula: String): Flow<List<Alumno>> = userRepository.getAll(matricula = matricula)
 
-    fun insertUser(user: UserData) = viewModelScope.launch {
-        userRepository.insertUser(User(id =0, name = user.name, email = user.email, phone = user.phone))
+    fun insertUser(user: AlumnoData) = viewModelScope.launch {
+        userRepository.insertUser(Alumno(id =0, nombre = user.nombre, correo = user.correo, edad = user.edad, matricula = user.matricula, carrera = user.carrera))
     }
 
-    fun deleteAll(allUsers: List<User>) = viewModelScope.launch {
-        userRepository.deleteAllUsers(allUsers)
+    fun deleteAll(allAlumnos: List<Alumno>) = viewModelScope.launch {
+        userRepository.deleteAllUsers(allAlumnos)
     }
 
     companion object {

@@ -5,20 +5,20 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class], version = 1)
-abstract class UserDataBase: RoomDatabase() {
-    abstract fun userDao(): UserDao
+@Database(entities = [Alumno::class], version = 1)
+abstract class AlumnosDataBase: RoomDatabase() {
+    abstract fun AlumnoDao(): AlumnoDao
 
     companion object {
         @Volatile
-        private var Instance: UserDataBase? = null
+        private var Instance: AlumnosDataBase? = null
 
-        fun getUserDatabase(context: Context): UserDataBase {
+        fun getUserDatabase(context: Context): AlumnosDataBase {
             return Instance ?: synchronized(this) {
                 Room.databaseBuilder(
                     context = context,
-                    klass = UserDataBase::class.java,
-                    name = "sample"
+                    klass = AlumnosDataBase::class.java,
+                    name = "AlumnosDB"
                 )
                     .build()
                     .also { Instance = it }
